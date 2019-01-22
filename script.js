@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 //input file path
-const csvFilePath='data-export.csv';
+const csvFilePath='stello.csv';
 
 //ouput file creation
 const ws = fs.createWriteStream('output.json');
@@ -14,7 +14,9 @@ csv()
 .fromFile(csvFilePath)
 .then((jsonObj)=>{
 
-	//writing data to json
-	fs.writeFile('output.json', JSON.stringify(jsonObj));
-
+	fs.writeFile ("output.json", JSON.stringify(jsonObj), function(err) {
+	    if (err) throw err;
+	    console.log('complete');
+	    }
+	);
 })
